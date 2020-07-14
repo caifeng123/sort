@@ -254,6 +254,59 @@ const fast = (arr) =>{
   }
 }
 
+const shell = (arr) =>{
+  //准备步长数组
+  // let stepArr = getStepArr()
+  let stepArr = getNetStepArr()
+
+  for(let i of stepArr){
+    sort(i)
+  }
+  return arr
+
+  //常规 二分步长 最差n**2
+  function getStepArr(){
+    let len = arr.length
+    while((len>>=1)>0){
+      stepArr.push(len)
+    }
+  }
+  //最优步长序列 最差n**(4/3)
+  function getNetStepArr(){
+    let len = arr.length
+    let k = 0,step = 0
+    let myarr = []
+    while(true){
+      if(k%2 == 0){
+        let pow = 2**(k>>1)
+        step=1+9*(pow**2-pow)
+      }else{
+        let pow1 = 2**((k-1)>>1)
+        let pow2 = 2**((k+1)>>1)
+        step = 1+ 8*pow1*pow2-6*pow2
+      }
+      if(step>=len) break
+      myarr.unshift(step)
+      k++
+    }
+    return myarr
+  }
+  function sort(step){
+    for(let col = 0;col<step;col++){
+      for(let begin = col+step;begin<arr.length;begin+=step){
+        let cur = begin
+        while(cur>col && arr[cur]<arr[cur-step]){
+          let tmp = arr[cur]
+          arr[cur] = arr[cur-step]
+          arr[cur-step] = arr[cur]
+          cur -= step
+        }
+      }
+    }
+  }
+  
+}
+
 module.exports = {
   bubble1,
   bubble2,
@@ -263,5 +316,6 @@ module.exports = {
   heap,
   insert,
   merge,
-  fast
+  fast,
+  shell
 }

@@ -16,17 +16,21 @@ const {
   heap,
   insert,
   merge,
-  fast
+  fast,
+  shell
 } = require('./sort')
 
-// create(0,100000,800000)
-createAsce(0,8000)
+create(0,100000,800000)
+// createAsce(0,8000)
 // sortTime(bubble1)
 // sortTime(insert)
 // sortTime(bubble2)
-sortTime(bubble3)
+// sortTime(bubble3)
 // sortTime(select1)
 // sortTime(select)
 sortTime(heap)
 sortTime(fast)
 sortTime(merge)
+sortTime(shell)
+
+// isAsce(shell)
