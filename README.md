@@ -3,13 +3,12 @@
 
 > sort.js
 - bubble   #三种冒泡排序(优化)
-
-  -bubble1
-  -bubble2
-  -bubble3
+  - bubble1
+  - bubble2
+  - bubble3
 - select   #两种select排序
 
-  -select1
+  - select1
 - heap     #堆排序
 - fast     #快速排序
 - merge    #归并排序
